@@ -1,0 +1,85 @@
+# Dependencies
+/node_modules/
+/.pnp
+.pnp.*
+# Keep authored Yarn tooling if the project adopts Yarn.
+/.yarn/*
+!/.yarn/patches/
+!/.yarn/plugins/
+!/.yarn/releases/
+!/.yarn/versions/
+
+# Generated builds and framework state
+/dist/
+/.next/
+/.vinext/
+/out/
+next-env.d.ts
+*.tsbuildinfo
+
+# Test output
+/coverage/
+
+# Package-manager logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Local environment and keys
+.env*
+.dev.vars*
+*.pem
+
+# Checkout-local tool state
+/.wrangler/
+/.sites-runtime/
+
+# Workspace scaffolding and publication archives
+/.agents/
+/.codex/
+/outputs/
+/work/
+
+# OS metadata
+.DS_Store
+
+# Unused Vinext starter files left in the local checkout.
+# The submitted source contains only the dependency-free Worker app.
+/app/
+/components/
+/db/
+/examples/
+/hooks/
+/lib/
+/public/
+/vendor/
+/scripts/*
+!/scripts/build.mjs
+!/scripts/preview.mjs
+!/scripts/serve-node.mjs
+!/scripts/smoke.mjs
+!/scripts/smoke-extensions.mjs
+!/scripts/smoke-journeys.mjs
+!/scripts/smoke-community.mjs
+!/scripts/smoke-calendar.mjs
+!/scripts/smoke-activity.mjs
+!/scripts/smoke-management.mjs
+!/scripts/smoke-performance.mjs
+!/scripts/smoke-campus.mjs
+!/scripts/smoke-refinements.mjs
+!/scripts/smoke-cycles.mjs
+/deploy/*.env
+/worker/index.ts
+/cloudflare-env.d.ts
+/components.json
+/drizzle.config.ts
+/eslint.config.mjs
+/next.config.ts
+/package-lock.json
+/postcss.config.mjs
+/tsconfig.json
+/vite.config.ts
+/.npmrc
+/.data/
+/process.md

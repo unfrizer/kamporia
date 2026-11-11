@@ -1,0 +1,9 @@
+# Requires all variables from /etc/atlas/gateway.env.
+# Keep this separate owner gate while the inner demo passwords are documented.
+{$ATLAS_DOMAIN} {
+    encode zstd gzip
+    basic_auth {
+        {$ATLAS_OWNER_USER} {$ATLAS_OWNER_PASSWORD_HASH}
+    }
+    reverse_proxy 127.0.0.1:4173
+}

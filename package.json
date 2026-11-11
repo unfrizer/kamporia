@@ -1,0 +1,13 @@
+{
+  "name": "kamporia-digital-deanery",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/preview.mjs"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

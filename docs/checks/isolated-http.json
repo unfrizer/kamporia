@@ -1,0 +1,47 @@
+{
+  "version": 14,
+  "commit": "84b1355f764d0d951f5ad127f597b4f033d42939",
+  "isolated": true,
+  "results": [
+    {
+      "script": "smoke-journeys.mjs",
+      "code": 0,
+      "output": "PASS: 201 checks across four role journeys, isolation, persistence and invalid input. Marker: [QA 2026-11-11T19:52:14.677Z]\n"
+    },
+    {
+      "script": "smoke-community.mjs",
+      "code": 0,
+      "output": "PASS: 142 community checks. [QA community 2026-11-11T19:52:15.394Z]\n"
+    },
+    {
+      "script": "smoke-calendar.mjs",
+      "code": 0,
+      "output": "PASS: 80 calendar checks. [QA calendar 2026-11-11T19:52:15.861Z]\n"
+    },
+    {
+      "script": "smoke-management.mjs",
+      "code": 0,
+      "output": "PASS: 113 management checks. [QA management 2026-11-11T19:52:16.270Z]\n"
+    },
+    {
+      "script": "smoke-activity.mjs",
+      "code": 0,
+      "output": "PASS: 107 activity checks. [QA activity 2026-11-11T19:52:16.764Z]\n"
+    },
+    {
+      "script": "smoke-campus.mjs",
+      "code": 0,
+      "output": "PASS: 174 campus checks: private plan, preferences, event and appointment races, permissions, subject hub, forecast, map, notifications.\n"
+    },
+    {
+      "script": "smoke-refinements.mjs",
+      "code": 0,
+      "output": "PASS: 96 refinements checks: staff isolation, private messaging, races, own schedule edits and conflicts.\n"
+    },
+    {
+      "script": "smoke-cycles.mjs",
+      "code": 0,
+      "output": "PASS: 141 cycle checks: custom anchor, New Year, multi-group lessons, one-off staff changes, durable notifications and write races.\n"
+    }
+  ]
+}

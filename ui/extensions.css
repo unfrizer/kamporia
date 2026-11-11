@@ -1,0 +1,212 @@
+/* Student tools, services, and the administration workspace. */
+.ext-toolbar { display: grid !important; grid-template-columns: minmax(0,1fr); }
+.ext-date-label { display: block; min-width: 0; }
+.ext-date-label .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.ext-homework-section { margin: 25px 0 30px; }
+.ext-task-card button.text-link, .ext-plan-copy button.text-link { border: 0; padding: 0; background: transparent; color: var(--accent-strong); font-weight: 750; text-align: left; }
+.ext-task-author { margin: 16px 0 12px; justify-content: space-between; }
+.ext-task-status.is-overdue { color: var(--warning); background: color-mix(in srgb,var(--warning) 12%,var(--surface)); }
+.ext-contact-heading { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.ext-contact-avatar { border: 0; flex: none; }
+.ext-contact-name { display: block; padding: 0; border: 0; background: transparent; color: var(--ink); text-align: left; font-weight: 800; font-size: 15px; line-height: 1.4; }
+.ext-contact-name:hover { color: var(--accent-strong); }
+.ext-contact-position { display: block; margin-top: 4px; font-size: 11px; line-height: 1.5; color: var(--accent-strong); }
+.ext-contact-meta { margin-left: 0; margin-right: 0; }
+.ext-contact-meta > div { display: grid; grid-template-columns: minmax(80px,.7fr) minmax(0,1fr); gap: 10px; }
+.ext-contact-meta dt { color: var(--muted); }
+.ext-contact-meta dd { margin: 0; color: var(--ink); overflow-wrap: anywhere; }
+.ext-service-card { flex-direction: column; gap: 10px; }
+.ext-service-card > small { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 11px; }
+.ext-service-card > .text-link { display: inline-flex; align-items: center; gap: 6px; padding: 0; margin-top: auto; border: 0; background: transparent; color: var(--accent-strong); font-weight: 750; text-align: left; }
+.ext-template-note p { margin: 3px 0 0; color: inherit; }
+.ext-template-note-quiet { margin-top: 20px !important; background: var(--surface) !important; color: var(--muted) !important; border-color: var(--line) !important; }
+.ext-template-note-quiet strong { color: var(--ink); }
+.ext-planner-day, .ext-week-preview { padding: 23px; margin-bottom: 20px; }
+.ext-plan-copy { min-width: 0; }
+.ext-plan-copy > span { display: block; margin-bottom: 5px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.ext-plan-time small { color: var(--muted); font-size: 9px; font-weight: 600; }
+.ext-add-lesson { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; min-height: 48px; padding: 12px; border: 1px dashed var(--line); border-radius: 12px; background: var(--surface-2); color: var(--accent-strong); font-weight: 750; }
+.ext-add-lesson:hover { border-color: var(--accent-strong); background: var(--accent-soft); }
+.ext-week-day span { display: grid; gap: 4px; }
+.ext-week-day i { font-style: normal; font-size: 10px; }
+.ext-time-presets { margin: -4px 0 18px; }
+.ext-time-presets > span { display: block; font-size: 10px; margin-bottom: 7px; }
+.ext-time-presets > div { display: flex; gap: 6px; flex-wrap: wrap; }
+.ext-time-presets .btn { min-height: 30px; padding: 7px 9px; font-size: 10px; }
+.ext-guide-nav > .eyebrow { padding: 9px 12px; }
+.ext-guide-content > .eyebrow { display: block; margin-bottom: 12px; }
+.ext-guide-table table { width: 100%; border-collapse: collapse; }
+.ext-guide-callout { display: flex; align-items: flex-start; gap: 9px; }
+.ext-guide-callout > .icon { margin-top: 3px; }
+.ext-guide-pagination { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 24px; }
+.ext-checklist li { display: flex; gap: 10px; padding-left: 0 !important; }
+.ext-checklist li::before { display: none !important; }
+.ext-checklist li > .icon { color: var(--success); width: 18px; height: 18px; margin-top: 3px; }
+.ext-btn-danger { color: #fff; background: #b43e50; border-color: #b43e50; }
+.ext-btn-danger:hover { background: #983144; }
+.ext-confirm > strong { display: block; color: var(--ink); }
+.ext-confirm p { margin: 6px 0; }
+.ext-confirm small { display: block; margin-top: 10px; line-height: 1.5; }
+.ext-service-detail > p { color: var(--muted); line-height: 1.7; }
+@media(max-width:480px) { .ext-planner-day,.ext-week-preview { padding: 16px; } .ext-contact-meta > div { grid-template-columns: 1fr; gap: 2px; } .ext-guide-pagination .btn { font-size: 11px; padding: 10px; } .ext-date-label { flex: 1; } .ext-date-label input { width: 100% !important; } .ext-task-status { align-self: flex-start; } }
+.ext-toolbar { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: 0 0 22px; padding: 18px 20px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
+.ext-filter-row { display: flex; gap: 14px; align-items: flex-end; flex-wrap: wrap; min-width: 0; flex: 1; }
+.ext-filter-row .field { flex: 1; min-width: 180px; margin: 0; }
+.ext-date-controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.ext-date-controls input { min-height: 40px; max-width: 180px; padding: 8px 11px; border: 1px solid var(--line); border-radius: 10px; color: var(--ink); background: var(--surface-2); }
+.ext-template-note { display: flex; align-items: flex-start; gap: 10px; padding: 14px 16px; margin: 0 0 20px; color: var(--accent-strong); border: 1px solid color-mix(in srgb, var(--accent-strong) 20%, var(--line)); background: var(--accent-soft); border-radius: 14px; font-size: 12px; line-height: 1.6; }
+.ext-template-note .icon { width: 17px; height: 17px; margin-top: 2px; }
+.ext-task-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+.ext-task-card { display: flex; flex-direction: column; min-width: 0; padding: 22px; border: 1px solid var(--line); border-radius: 19px; background: var(--surface); box-shadow: var(--shadow); }
+.ext-task-card h3 { margin: 14px 0 9px; font-size: 17px; line-height: 1.35; letter-spacing: -.025em; overflow-wrap: anywhere; }
+.ext-task-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.ext-task-meta .avatar { width: 27px; height: 27px; font-size: 10px; border-radius: 9px; }
+.ext-task-body { color: var(--muted); font-size: 13px; line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; margin: 0 0 18px; }
+.ext-task-status { display: inline-flex; align-items: center; gap: 5px; padding: 6px 9px; border-radius: 8px; color: var(--accent-strong); background: var(--accent-soft); font-size: 11px; font-weight: 750; }
+.ext-task-status.overdue { color: var(--warning); background: color-mix(in srgb,var(--warning) 12%,var(--surface)); }
+.ext-task-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); }
+.ext-task-actions .ext-task-meta { flex: 1; }
+.ext-task-date { margin-left: auto; color: var(--muted); font-size: 11px; }
+.ext-contact-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
+.ext-contact-card { display: flex; flex-direction: column; min-width: 0; padding: 22px; border: 1px solid var(--line); border-radius: 19px; background: var(--surface); box-shadow: var(--shadow); }
+.ext-contact-card h3 { margin: 13px 0 5px; font-size: 16px; line-height: 1.4; letter-spacing: -.02em; overflow-wrap: anywhere; }
+.ext-contact-card p { color: var(--muted); font-size: 12px; line-height: 1.6; margin: 8px 0 15px; overflow-wrap: anywhere; }
+.ext-contact-avatar { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 15px; background: var(--accent-soft); color: var(--accent-strong); font-size: 15px; font-weight: 850; }
+.ext-contact-avatar .icon { width: 23px; height: 23px; }
+.ext-contact-meta { display: grid; gap: 8px; margin-top: auto; padding-top: 14px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; line-height: 1.5; overflow-wrap: anywhere; }
+.ext-contact-meta span, .ext-contact-meta a { display: flex; align-items: flex-start; gap: 7px; min-width: 0; }
+.ext-contact-meta .icon { width: 14px; height: 14px; margin-top: 1px; }
+.ext-contact-card > .btn { margin-top: 15px; align-self: flex-start; }
+.ext-contacts-section { margin: 0 0 28px; }
+.ext-leadership { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin-bottom: 28px; }
+.ext-leadership .ext-contact-card { position: relative; border-color: color-mix(in srgb,var(--accent-strong) 22%,var(--line)); background: linear-gradient(120deg,var(--surface),var(--accent-soft)); }
+.ext-service-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+.ext-service-card { display: flex; align-items: flex-start; gap: 14px; min-width: 0; padding: 21px; border: 1px solid var(--line); border-radius: 17px; background: var(--surface); }
+.ext-service-card h3 { margin: 0 0 7px; font-size: 15px; }
+.ext-service-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.65; overflow-wrap: anywhere; }
+.ext-service-card .ext-contact-avatar { flex: none; width: 39px; height: 39px; border-radius: 12px; }
+.ext-service-card .btn { margin-top: 12px; }
+.ext-planner-layout { display: grid; grid-template-columns: 245px minmax(0,1fr); gap: 22px; align-items: start; }
+.ext-planner-sidebar { min-width: 0; position: sticky; top: 98px; padding: 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 19px; }
+.ext-planner-sidebar h3 { margin: 0 0 15px; font-size: 15px; }
+.ext-planner-sidebar .field { margin-bottom: 18px; }
+.ext-day-buttons { display: grid; gap: 6px; }
+.ext-day-button { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; padding: 11px 12px; border: 1px solid transparent; border-radius: 11px; background: transparent; color: var(--muted); font-size: 12px; font-weight: 750; text-align: left; }
+.ext-day-button span:last-child { display: inline-grid; min-width: 22px; height: 22px; align-items: center; justify-content: center; border-radius: 7px; color: var(--muted); background: var(--surface-2); font-size: 10px; }
+.ext-day-button:hover { background: var(--surface-2); color: var(--ink); }
+.ext-day-button.active { border-color: color-mix(in srgb,var(--accent-strong) 28%,var(--line)); background: var(--accent-soft); color: var(--accent-strong); }
+.ext-day-button.active span:last-child { background: var(--surface); color: var(--accent-strong); }
+.ext-planner-main { min-width: 0; }
+.ext-plan-summary { display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap; margin-bottom: 18px; }
+.ext-plan-summary h2 { margin: 0; font-size: 23px; letter-spacing: -.035em; }
+.ext-plan-summary p { margin: 6px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.ext-plan-row { display: grid; grid-template-columns: 88px minmax(0,1fr) auto; align-items: center; gap: 17px; padding: 18px; margin-bottom: 12px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); box-shadow: var(--shadow); }
+.ext-plan-time { align-self: stretch; display: flex; flex-direction: column; justify-content: center; gap: 5px; border-right: 1px solid var(--line); color: var(--accent-strong); font-weight: 850; font-size: 14px; }
+.ext-plan-time span { color: var(--muted); font-size: 11px; font-weight: 600; }
+.ext-plan-row h3 { margin: 0 0 7px; font-size: 15px; line-height: 1.4; }
+.ext-plan-row p { display: flex; gap: 5px 10px; flex-wrap: wrap; margin: 5px 0 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.ext-plan-actions { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.ext-plan-actions .icon-btn { width: 34px; height: 34px; border-radius: 10px; }
+.ext-stat { display: inline-flex; align-items: center; gap: 7px; padding: 7px 10px; border-radius: 9px; background: var(--surface-2); color: var(--muted); font-size: 11px; }
+.ext-stat strong { color: var(--ink); font-size: 13px; }
+.ext-week-strip { display: grid; grid-template-columns: repeat(7,minmax(0,1fr)); gap: 8px; margin: 25px 0 0; }
+.ext-week-day { padding: 12px 9px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); text-align: center; min-width: 0; color: var(--muted); font-size: 11px; }
+.ext-week-day strong { display: block; margin-bottom: 7px; color: var(--ink); font-size: 12px; }
+.ext-week-day.active { border-color: var(--accent-strong); background: var(--accent-soft); color: var(--accent-strong); }
+.ext-guide-layout { display: grid; grid-template-columns: 235px minmax(0,1fr); align-items: start; gap: 24px; }
+.ext-guide-nav { position: sticky; top: 98px; display: grid; gap: 4px; padding: 11px; border: 1px solid var(--line); border-radius: 17px; background: var(--surface); }
+.ext-guide-nav button { display: flex; align-items: center; gap: 9px; width: 100%; padding: 11px 12px; border: 0; border-radius: 10px; background: transparent; color: var(--muted); font-size: 12px; font-weight: 700; line-height: 1.35; text-align: left; }
+.ext-guide-nav button:hover { background: var(--surface-2); color: var(--ink); }
+.ext-guide-nav button.active { background: var(--accent-soft); color: var(--accent-strong); }
+.ext-guide-nav button span:first-child { display: grid; place-items: center; flex: none; width: 23px; height: 23px; border-radius: 7px; background: var(--surface-2); font-size: 10px; }
+.ext-guide-content { min-width: 0; padding: clamp(21px,3vw,34px); border: 1px solid var(--line); border-radius: 21px; background: var(--surface); }
+.ext-guide-content h2 { margin: 0 0 13px; font-size: 24px; letter-spacing: -.035em; line-height: 1.25; }
+.ext-guide-content h3 { margin: 25px 0 12px; font-size: 17px; line-height: 1.4; }
+.ext-guide-content p { margin: 10px 0 15px; color: var(--muted); font-size: 13px; line-height: 1.75; }
+.ext-guide-content ol, .ext-guide-content ul { padding-left: 21px; margin: 15px 0; color: var(--muted); font-size: 13px; line-height: 1.75; }
+.ext-guide-content li { padding-left: 4px; margin: 9px 0; }
+.ext-guide-content strong { color: var(--ink); }
+.ext-guide-step { display: grid; grid-template-columns: 33px minmax(0,1fr); gap: 12px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+.ext-guide-step:last-child { border: 0; }
+.ext-guide-step > span:first-child { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 10px; background: var(--accent-soft); color: var(--accent-strong); font-weight: 850; font-size: 12px; }
+.ext-guide-step h3 { margin: 2px 0 5px; font-size: 14px; }
+.ext-guide-step p { margin: 0; font-size: 12px; }
+.ext-guide-callout { padding: 16px 18px; margin: 20px 0; border-left: 3px solid var(--accent-strong); border-radius: 0 12px 12px 0; background: var(--accent-soft); color: var(--accent-strong); font-size: 12px; line-height: 1.7; }
+.ext-guide-callout p { color: inherit; margin: 0; font-size: inherit; }
+.ext-guide-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 12px; line-height: 1.6; }
+.ext-guide-table th { padding: 11px 12px; text-align: left; color: var(--ink); background: var(--surface-2); border-bottom: 1px solid var(--line); }
+.ext-guide-table td { padding: 12px; vertical-align: top; color: var(--muted); border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
+.ext-guide-table td:first-child { color: var(--ink); font-weight: 700; width: 31%; }
+.ext-checklist { display: grid; gap: 11px; padding: 0 !important; list-style: none; }
+.ext-checklist li { position: relative; padding-left: 27px; margin: 0; }
+.ext-checklist li::before { content: '✓'; position: absolute; left: 0; top: 0; display: grid; place-items: center; width: 19px; height: 19px; border-radius: 6px; background: color-mix(in srgb,var(--success) 13%,var(--surface)); color: var(--success); font-weight: 850; font-size: 11px; }
+.ext-form-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 14px; }
+.ext-form-grid .ext-full { grid-column: 1/-1; }
+.ext-modal-error { padding: 12px 14px; margin: 0 0 17px; border: 1px solid color-mix(in srgb,var(--danger) 25%,var(--line)); border-radius: 11px; color: var(--danger); background: color-mix(in srgb,var(--danger) 8%,var(--surface)); font-size: 12px; line-height: 1.6; }
+.ext-danger-zone { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); }
+.ext-danger-zone p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
+.ext-confirm { padding: 16px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 13px; margin: 15px 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+.ext-danger { color: var(--danger) !important; }
+.ext-person-link { border: 0; padding: 0; background: transparent; color: inherit; text-align: left; font: inherit; cursor: pointer; }
+.ext-person-link:hover { color: var(--accent-strong); text-decoration: underline; text-underline-offset: 3px; }
+.ext-button-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 16px 0 0; }
+.ext-section-count { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 7px; border-radius: 8px; background: var(--surface-2); color: var(--muted); font-size: 11px; font-weight: 800; }
+
+@media (max-width: 1180px) {
+  .ext-contact-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .ext-planner-layout { grid-template-columns: 210px minmax(0,1fr); gap: 16px; }
+  .ext-plan-row { grid-template-columns: 76px minmax(0,1fr); gap: 13px; }
+  .ext-plan-actions { grid-column: 2; }
+  .ext-guide-layout { grid-template-columns: 200px minmax(0,1fr); gap: 17px; }
+}
+@media (max-width: 740px) {
+  .ext-toolbar { padding: 15px; align-items: stretch; gap: 13px; }
+  .ext-filter-row { width: 100%; }
+  .ext-filter-row .field { min-width: min(100%,170px); }
+  .ext-task-grid, .ext-service-grid { grid-template-columns: 1fr; }
+  .ext-planner-layout, .ext-guide-layout { grid-template-columns: 1fr; }
+  .ext-planner-sidebar, .ext-guide-nav { position: static; }
+  .ext-day-buttons { grid-template-columns: repeat(4,minmax(0,1fr)); gap: 5px; }
+  .ext-day-button { justify-content: center; flex-wrap: wrap; gap: 5px; padding: 10px 5px; font-size: 11px; }
+  .ext-guide-nav { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .ext-guide-nav button { padding: 9px; font-size: 11px; }
+  .ext-week-strip { gap: 5px; }
+  .ext-week-day { padding: 10px 4px; font-size: 10px; }
+  .ext-week-day strong { font-size: 11px; }
+  .ext-plan-summary h2 { font-size: 21px; }
+}
+@media (max-width: 480px) {
+  .ext-contact-grid, .ext-leadership { grid-template-columns: 1fr; }
+  .ext-task-card, .ext-contact-card { padding: 18px; border-radius: 17px; }
+  .ext-task-card h3 { font-size: 16px; }
+  .ext-task-body { font-size: 12px; }
+  .ext-contact-meta { font-size: 11px; }
+  .ext-toolbar { padding: 13px; }
+  .ext-filter-row { flex-direction: column; align-items: stretch; }
+  .ext-filter-row .field { width: 100%; min-width: 0; }
+  .ext-date-controls { gap: 6px; }
+  .ext-date-controls .icon-btn { width: 35px; height: 38px; border-radius: 10px; }
+  .ext-date-controls input { flex: 1; min-width: 0; max-width: none; width: 130px; }
+  .ext-date-controls .btn { min-height: 38px; padding: 8px 11px; }
+  .ext-task-actions { align-items: flex-start; }
+  .ext-task-actions .ext-task-meta { flex-basis: 100%; }
+  .ext-task-actions .btn { flex: 1; }
+  .ext-planner-sidebar { padding: 16px; }
+  .ext-plan-row { padding: 14px; grid-template-columns: 67px minmax(0,1fr); gap: 12px; }
+  .ext-plan-row h3 { font-size: 13px; }
+  .ext-plan-time { font-size: 12px; }
+  .ext-plan-actions .btn { padding: 7px 9px; font-size: 11px; }
+  .ext-guide-content { padding: 20px 16px; border-radius: 17px; }
+  .ext-guide-content h2 { font-size: 22px; }
+  .ext-guide-content p, .ext-guide-content li { font-size: 12px; }
+  .ext-guide-nav { gap: 3px; padding: 8px; }
+  .ext-guide-nav button { gap: 6px; padding: 8px; }
+  .ext-guide-nav button span:first-child { width: 20px; height: 20px; }
+  .ext-guide-table { font-size: 11px; }
+  .ext-guide-table th, .ext-guide-table td { padding: 9px 7px; }
+  .ext-guide-callout { padding: 13px; font-size: 11px; }
+  .ext-form-grid { grid-template-columns: 1fr; }
+  .ext-danger-zone { flex-direction: column; align-items: stretch; }
+  .ext-plan-summary > .btn { width: 100%; }
+  .ext-template-note { padding: 12px; font-size: 11px; }
+}

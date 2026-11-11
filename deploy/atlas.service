@@ -1,0 +1,25 @@
+[Unit]
+Description=Kamporia digital deanery
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=atlas
+Group=atlas
+WorkingDirectory=/opt/atlas
+Environment=HOST=127.0.0.1
+Environment=PORT=4173
+Environment=DATABASE_PATH=/var/lib/atlas/atlas.sqlite
+Environment=TRUST_PROXY=1
+EnvironmentFile=/etc/atlas/app.env
+ExecStart=/usr/bin/node /opt/atlas/scripts/serve-node.mjs
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/atlas
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

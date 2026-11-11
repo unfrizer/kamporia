@@ -1,0 +1,36 @@
+{
+  "commit": "84b1355f764d0d951f5ad127f597b4f033d42939",
+  "origin": "https://kamporia.ru",
+  "completedAtUTC": "2026-11-11T20:17:50.819Z",
+  "matchesBuiltRelease": true,
+  "results": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 841,
+      "sha256": "86cdca79022f0dfa64d93fcf67ef9f1ae7c69f6ffc06dcf06f716f8174a3096d",
+      "responseMs": 210
+    },
+    {
+      "path": "/app.js",
+      "status": 200,
+      "bytes": 320976,
+      "sha256": "26f0e002bc0f4d7b3da610dc962b9b9ff152c1194b79597f890c137723188e9a",
+      "responseMs": 255
+    },
+    {
+      "path": "/styles.css",
+      "status": 200,
+      "bytes": 124211,
+      "sha256": "e8919193420b73dd370928cd68b552d91db25066441f4adb415edeb81ea807ff",
+      "responseMs": 89
+    },
+    {
+      "path": "/favicon.svg",
+      "status": 200,
+      "bytes": 191,
+      "sha256": "80010c3b6cda0bff72fb1331cb8b2ada4a3ab1fdf7d1f7a682ecdf1f6ff7ba77",
+      "responseMs": 97
+    }
+  ]
+}
