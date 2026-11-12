@@ -1,0 +1,57 @@
+{
+  "revision": 2,
+  "cursorOverlay": false,
+  "videos": [
+    {
+      "file": "Kamporia-demo-clean.mp4",
+      "durationSeconds": 230,
+      "frames": 6900,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "codec": "h264",
+      "audio": "none - intended for the author voiceover",
+      "bytes": 10540881,
+      "sha256": "44f1308ac62bedbfc1fdf5a4c931886954957386ab1127743ed9422e0d4fa9d4",
+      "fullyDecoded": true
+    },
+    {
+      "file": "Kamporia-demo-captions.mp4",
+      "durationSeconds": 230,
+      "frames": 6900,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "codec": "h264",
+      "audio": "none - intended for the author voiceover",
+      "bytes": 11263110,
+      "sha256": "0a66f9ba85e82510b1ad8089d58269336b0f5abab6301d0163674128214d897a",
+      "fullyDecoded": true
+    }
+  ],
+  "captions": {
+    "cues": 46,
+    "exactNarrationText": true,
+    "timingValidated": true,
+    "encodedCaptionsVisible": true
+  },
+  "workingSiteReadOnlyCheck": {
+    "version": 14,
+    "origin": "https://kamporia.ru",
+    "checks": 132,
+    "roles": 4,
+    "completedAtUTC": "2026-11-12T17:36:06.058Z"
+  },
+  "filmingEnvironment": {
+    "separateLocalDatabase": true,
+    "databaseRemoved": true,
+    "serverStopped": true,
+    "productionLearningDataChanged": false
+  },
+  "voiceoverProvidedByAuthor": true,
+  "mainDurationSeconds": 230,
+  "estimatedWithCameraSegmentsSeconds": [
+    262,
+    270
+  ]
+}

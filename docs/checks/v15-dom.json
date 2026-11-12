@@ -1,0 +1,9 @@
+{
+  "version": 15,
+  "checks": 21,
+  "passed": true,
+  "type": "server-side DOM regression, not browser layout QA",
+  "navigationContainerPreserved": true,
+  "reducedMotion": true,
+  "accountBoundary": true
+}

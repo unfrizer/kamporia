@@ -1,0 +1,24 @@
+{
+  "version": 15,
+  "commit": "ec642eaf4bdd838383fc982c37df6d917db1583c",
+  "url": "https://kamporia.ru",
+  "result": {
+    "version": 15,
+    "commit": "ec642eaf4bdd838383fc982c37df6d917db1583c",
+    "backup": "/root/kamporia-backups/v15-20261112T183313Z",
+    "verifiedTables": 35,
+    "preservedFiles": 9,
+    "integrity": "ok",
+    "schemaChanges": false
+  },
+  "live": {
+    "version": 15,
+    "origin": "https://kamporia.ru",
+    "checks": 132,
+    "roles": 4,
+    "completedAtUTC": "2026-11-12T18:33:16.204Z"
+  },
+  "domChecks": 21,
+  "performanceChecks": 15,
+  "browserVisualCheck": "not run: computer use stopped because URL could not be determined reliably"
+}

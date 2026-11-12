@@ -1,3 +1,52 @@
+/*
+Inline interface icon geometry includes adaptations of Lucide/Feather primitives.
+License notices for these icons follow. The Kamporia brand mark is separate.
+
+ISC License
+
+Copyright (c) 2026 Lucide Icons and Contributors
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+---
+
+The following Lucide icons are derived from the Feather project:
+
+airplay, alert-circle, alert-octagon, alert-triangle, aperture, arrow-down-circle, arrow-down-left, arrow-down-right, arrow-down, arrow-left-circle, arrow-left, arrow-right-circle, arrow-right, arrow-up-circle, arrow-up-left, arrow-up-right, arrow-up, at-sign, calendar, cast, check, chevron-down, chevron-left, chevron-right, chevron-up, chevrons-down, chevrons-left, chevrons-right, chevrons-up, circle, clipboard, clock, code, columns, command, compass, corner-down-left, corner-down-right, corner-left-down, corner-left-up, corner-right-down, corner-right-up, corner-up-left, corner-up-right, crosshair, database, divide-circle, divide-square, dollar-sign, download, external-link, feather, frown, hash, headphones, help-circle, info, italic, key, layout, life-buoy, link-2, link, loader, lock, log-in, log-out, maximize, meh, minimize, minimize-2, minus-circle, minus-square, minus, monitor, moon, more-horizontal, more-vertical, move, music, navigation-2, navigation, octagon, pause-circle, percent, plus-circle, plus-square, plus, power, radio, rss, search, server, share, shopping-bag, sidebar, smartphone, smile, square, table-2, tablet, target, terminal, trash-2, trash, triangle, tv, type, upload, x-circle, x-octagon, x-square, x, zoom-in, zoom-out
+
+The MIT License (MIT) (for the icons listed above)
+
+Copyright (c) 2013-present Cole Bemis
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
 (() => {
   'use strict';
 
@@ -192,12 +241,87 @@
     setTimeout(() => node.remove(), 4000);
   }
 
+  let paintedScope = '', paintedRoute = '', paintedMain = '', paintedModal = '';
+  const motionReduced = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  function motionLeave(node, dialog = false) {
+    if (!node) return;
+    if (motionReduced() || typeof node.animate !== 'function') { node.remove(); return; }
+    node.classList.add('motion-leaving');
+    node.setAttribute('aria-hidden', 'true'); node.inert = true; node.style.pointerEvents = 'none';
+    const animations = [node.animate([{opacity:1},{opacity:0}], {duration:120,easing:'ease-out',fill:'forwards'})];
+    if (dialog) node.querySelector('.modal')?.animate([{transform:'translateY(0)'},{transform:'translateY(5px)'}], {duration:120,easing:'ease-out',fill:'forwards'});
+    animations[0].finished.catch(()=>{}).finally(()=>node.remove());
+  }
+  function syncNavigation(current, next) {
+    if (!current || !next) return;
+    const top = current.scrollTop, left = current.scrollLeft;
+    const oldButtons = [...current.children], newButtons = [...next.children];
+    if (oldButtons.length === newButtons.length && oldButtons.every((button,i)=>button.dataset.view === newButtons[i].dataset.view)) {
+      oldButtons.forEach((button,i)=>{
+        const fresh = newButtons[i], liveBadge = button.querySelector('[data-chat-unread-count]');
+        button.className = fresh.className;
+        if (fresh.hasAttribute('aria-current')) button.setAttribute('aria-current',fresh.getAttribute('aria-current'));
+        else button.removeAttribute('aria-current');
+        if (button.innerHTML !== fresh.innerHTML) { button.innerHTML = fresh.innerHTML; if (liveBadge) button.append(liveBadge); }
+      });
+    } else current.innerHTML = next.innerHTML;
+    // This is the actual scroll container; keep its node and its offset through both paints of a navigation.
+    current.scrollTop = top; current.scrollLeft = left;
+  }
+  function paintShell() {
+    const scope = [state.user.id,state.user.role,state.user.groupId||''].join('|');
+    const template = document.createElement('template'); template.innerHTML = renderShell();
+    const fresh = template.content.querySelector('.shell'), previous = root.querySelector('.shell');
+    const route = currentRoute(), nextMain = fresh.querySelector('#main-content');
+    const nextMarkup = nextMain.innerHTML, sameScope = previous && paintedScope === scope;
+    const contentChanged = !sameScope || paintedMain !== nextMarkup;
+    if (sameScope) {
+      const sidebar = previous.querySelector('.sidebar');
+      sidebar.className = fresh.querySelector('.sidebar').className;
+      syncNavigation(sidebar.querySelector('.side-nav'),fresh.querySelector('.side-nav'));
+      syncNavigation(previous.querySelector('.mobile-nav'),fresh.querySelector('.mobile-nav'));
+      for (const selector of ['.sidebar-profile','.topbar-breadcrumb','.topbar-date','.topbar-avatar']) {
+        const old = previous.querySelector(selector), next = fresh.querySelector(selector);
+        if (old && next && old.innerHTML !== next.innerHTML) old.innerHTML = next.innerHTML;
+      }
+      const scrim = previous.querySelector('.sidebar-scrim:not(.motion-leaving)');
+      if (state.menu && !scrim) previous.prepend(fresh.querySelector('.sidebar-scrim'));
+      else if (!state.menu && scrim) motionLeave(scrim);
+      if (contentChanged) previous.querySelector('#main-content').innerHTML = nextMarkup;
+    } else {
+      root.replaceChildren(fresh); paintedModal = '';
+    }
+    const main = root.querySelector('#main-content');
+    if (contentChanged && !motionReduced() && typeof main.animate === 'function') {
+      main.getAnimations().forEach(animation=>animation.cancel());
+      const navigation = paintedRoute !== route;
+      main.animate([{opacity:navigation ? .55 : .8,transform:`translateY(${navigation ? 5 : 2}px)`},{opacity:1,transform:'translateY(0)'}], {duration:navigation ? 170 : 120,easing:'cubic-bezier(.2,.75,.25,1)'});
+    }
+    paintedScope = scope; paintedRoute = route; paintedMain = nextMarkup;
+  }
+  function paintModal() {
+    const current = root.querySelector('.modal-backdrop:not(.motion-leaving)');
+    const markup = state.user && state.modal ? renderModal() : '';
+    if (markup === paintedModal) return;
+    const previousType = current?.querySelector('[role="dialog"]')?.getAttribute('aria-label');
+    const focusedId = current?.contains(document.activeElement) ? document.activeElement.id : '';
+    const scrollTop = current?.querySelector('.modal')?.scrollTop || 0;
+    if (current) { if (markup) current.remove(); else motionLeave(current,true); }
+    paintedModal = markup;
+    if (!markup) return;
+    root.insertAdjacentHTML('beforeend', markup);
+    const next = root.querySelector('.modal-backdrop:not(.motion-leaving)');
+    const sameDialog = previousType === next?.querySelector('[role="dialog"]')?.getAttribute('aria-label');
+    if (sameDialog) next.querySelector('.modal').scrollTop = scrollTop;
+    const field = sameDialog && focusedId ? document.getElementById(focusedId) : null;
+    (field || next.querySelector('button, input, select, textarea'))?.focus({preventScroll:true});
+  }
   function render() {
     syncPublicationDraft();
-    if (state.loading) { root.innerHTML = `<div class="loading"><div class="loading-inner">${logo()}<span>Собираем ваш учебный день…</span></div></div>`; return; }
+    if (state.loading) { root.innerHTML = `<div class="loading"><div class="loading-inner">${logo()}<span>Собираем ваш учебный день…</span></div></div>`; paintedScope='';paintedRoute='';paintedMain='';paintedModal=''; return; }
     if (state.user && location.hash !== '#'+currentRoute()) history.pushState(null,'','#'+currentRoute());
-    root.innerHTML = state.user ? renderShell() : renderLogin();
-    if (state.user && state.modal) { root.insertAdjacentHTML('beforeend', renderModal()); requestAnimationFrame(()=>root.querySelector('.modal button, .modal input')?.focus()); }
+    if (state.user) { paintShell(); paintModal(); }
+    else { root.innerHTML = renderLogin(); paintedScope='';paintedRoute='';paintedMain='';paintedModal=''; }
     document.body.classList.toggle('modal-open',Boolean(state.user&&state.modal));
     if (state.view === 'chats') {
       const area = root.querySelector('.chat-messages');
@@ -236,7 +360,7 @@
       ${state.menu ? '<div class="sidebar-scrim" data-action="menu-close"></div>' : ''}
       <aside class="sidebar ${state.menu ? 'open' : ''}"><a class="brand-link" href="#home" data-view="home">${logo()}</a><button class="icon-btn sidebar-mobile-close" data-action="menu-close" aria-label="Закрыть меню">${icon('close')}</button><div class="side-caption"><span class="desktop-caption">Пространство</span><span class="mobile-caption">Другие разделы</span></div><nav class="side-nav" aria-label="Основная навигация">${nav.map(([id,label,ic]) => `<button class="nav-link ${['home','schedule','grades','staff','chats'].includes(id)?'mobile-duplicate':''} ${state.view === id ? 'active' : ''}" data-view="${id}" ${state.view === id ? 'aria-current="page"' : ''}>${icon(ic)}<span>${label}</span>${id === 'requests' && isStudent() && Number(state.data.dashboard?.pendingRequests) > 0 ? `<span class="nav-badge">${state.data.dashboard.pendingRequests}</span>` : ''}</button>`).join('')}</nav><div class="sidebar-bottom"><div class="sidebar-note"><strong>Всё важное — рядом</strong><p>Ваш день, группа и университет всегда под рукой.</p></div><button class="sidebar-profile" data-account-action="open" aria-label="Мой профиль"><span class="avatar">${esc(userInitials(state.user))}</span><span class="profile-copy"><strong>${esc(state.user.name)}</strong><span>${esc(roleName(state.user.role))}${state.user.group ? ` · ${esc(state.user.group)}` : ''}</span></span>${icon('chevron','icon-sm')}</button></div></aside>
       <div class="main-area"><header class="topbar"><div class="topbar-left"><button class="icon-btn menu-toggle" data-action="menu-toggle" aria-label="Открыть меню">${icon('menu')}</button><div class="topbar-breadcrumb">Кампория <span aria-hidden="true">/</span> <strong>${esc(viewTitle())}</strong></div></div><div class="topbar-actions"><div class="topbar-date">${icon('calendar','icon-sm')} ${esc(dateFmt(new Date(), {weekday:'short',day:'numeric',month:'long'}))}</div><button class="icon-btn" data-view="notifications" aria-label="Уведомления">${icon('bell')}<span data-notification-count class="activity-badge" hidden>0</span></button><button class="topbar-avatar" data-view="profile" aria-label="Краткий профиль"><span class="avatar">${esc(userInitials(state.user))}</span></button></div></header>
-      <main class="content screen-enter" id="main-content"><p class="concept-notice">${icon('info','icon-sm')}<span>Конкурсный концепт. Не официальный сервис вуза. Все данные вымышлены.</span></p>${renderPage()}</main></div>
+      <main class="content" id="main-content"><p class="concept-notice">${icon('info','icon-sm')}<span>Конкурсный концепт. Не официальный сервис вуза. Все данные вымышлены.</span></p>${renderPage()}</main></div>
       <nav class="mobile-nav" aria-label="Быстрая навигация">${[['home','Главная','home'],['schedule','Расписание','calendar'],[isStudent()?'grades':'staff',isStudent()?'Оценки':'Работа',isStudent()?'grades':'chart'],['chats','Чаты','chat'],['account','Профиль','users']].map(([id,label,ic]) => `<button data-view="${id}" class="${state.view === id ? 'active' : ''}">${icon(ic)}<span>${label}</span></button>`).join('')}</nav>
     </div>`;
   }
