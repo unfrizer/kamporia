@@ -1,56 +1,274 @@
 {
-  "revision": 2,
-  "cursorOverlay": false,
+  "revision": 3,
   "videos": [
     {
       "file": "Kamporia-demo-clean.mp4",
-      "durationSeconds": 230,
+      "seconds": 230,
       "frames": 6900,
       "width": 1920,
       "height": 1080,
       "fps": 30,
       "codec": "h264",
-      "audio": "none - intended for the author voiceover",
-      "bytes": 10540881,
-      "sha256": "44f1308ac62bedbfc1fdf5a4c931886954957386ab1127743ed9422e0d4fa9d4",
-      "fullyDecoded": true
+      "audio": "none: intended for author voiceover",
+      "fullyDecoded": true,
+      "bytes": 19368056,
+      "sha256": "dd4db20eadc184e5d00cfeb19f12b37af6bc3ee90f3f9c30c98022d2c396be51"
     },
     {
       "file": "Kamporia-demo-captions.mp4",
-      "durationSeconds": 230,
+      "seconds": 230,
       "frames": 6900,
       "width": 1920,
       "height": 1080,
       "fps": 30,
       "codec": "h264",
-      "audio": "none - intended for the author voiceover",
-      "bytes": 11263110,
-      "sha256": "0a66f9ba85e82510b1ad8089d58269336b0f5abab6301d0163674128214d897a",
-      "fullyDecoded": true
+      "audio": "none: intended for author voiceover",
+      "fullyDecoded": true,
+      "bytes": 20051916,
+      "sha256": "99efef82ee531252a28440c0ce40e200ef764190416b77f3894c5964551d939d"
     }
   ],
-  "captions": {
-    "cues": 46,
+  "shots": 47,
+  "highlightedActions": 31,
+  "cursorOverlay": false,
+  "highlightStyle": "slow amber pulse, white contrast border, dim surroundings",
+  "domCoordinatesMappedToCapture": true,
+  "subtitles": {
+    "cues": 63,
     "exactNarrationText": true,
-    "timingValidated": true,
-    "encodedCaptionsVisible": true
+    "noCueCrossesShotBoundary": true,
+    "encodedSubtitlesVisible": true
   },
-  "workingSiteReadOnlyCheck": {
-    "version": 14,
-    "origin": "https://kamporia.ru",
-    "checks": 132,
-    "roles": 4,
-    "completedAtUTC": "2026-11-12T17:36:06.058Z"
-  },
+  "encodedActionChecks": [
+    {
+      "step": 1,
+      "frame": 261,
+      "button": "Войти в кабинет",
+      "amberPixels": 5349,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 2,
+      "frame": 375,
+      "button": "Мой профиль",
+      "amberPixels": 2933,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 3,
+      "frame": 537,
+      "button": "Закрыть карточку",
+      "amberPixels": 1095,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 4,
+      "frame": 615,
+      "button": "Расписание",
+      "amberPixels": 2792,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 5,
+      "frame": 762,
+      "button": "День",
+      "amberPixels": 1122,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 6,
+      "frame": 1095,
+      "button": "Проектирование интерфейсов",
+      "amberPixels": 2561,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 7,
+      "frame": 1401,
+      "button": "Как провести UX-исследование",
+      "amberPixels": 6394,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 8,
+      "frame": 1581,
+      "button": "Закрыть материал",
+      "amberPixels": 1163,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 9,
+      "frame": 1665,
+      "button": "Успеваемость",
+      "amberPixels": 2786,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 10,
+      "frame": 2025,
+      "button": "Заявки",
+      "amberPixels": 2791,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 11,
+      "frame": 2142,
+      "button": "Новая заявка",
+      "amberPixels": 2373,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 12,
+      "frame": 2328,
+      "button": "Отправить заявку",
+      "amberPixels": 2980,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 13,
+      "frame": 2691,
+      "button": "Открыть заявку Майи Орловой",
+      "amberPixels": 9044,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 14,
+      "frame": 2895,
+      "button": "Обновить статус",
+      "amberPixels": 2935,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 15,
+      "frame": 3369,
+      "button": "Расписание преподавателя",
+      "amberPixels": 2790,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 16,
+      "frame": 3513,
+      "button": "Только эта пара",
+      "amberPixels": 2143,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 17,
+      "frame": 3612,
+      "button": "Аудитория: 112 → 214",
+      "amberPixels": 5747,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 18,
+      "frame": 3801,
+      "button": "Сохранить эту пару",
+      "amberPixels": 3388,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 19,
+      "frame": 4059,
+      "button": "Уведомления студента",
+      "amberPixels": 1044,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 20,
+      "frame": 4383,
+      "button": "Настроить недели",
+      "amberPixels": 2666,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 21,
+      "frame": 4605,
+      "button": "Вернуться в конструктор",
+      "amberPixels": 1151,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 22,
+      "frame": 4695,
+      "button": "Добавить занятие",
+      "amberPixels": 2964,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 23,
+      "frame": 4803,
+      "button": "Выбрать ПИ-23-2",
+      "amberPixels": 558,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 24,
+      "frame": 5211,
+      "button": "О клубе и новости",
+      "amberPixels": 4554,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 25,
+      "frame": 5376,
+      "button": "Чат клуба",
+      "amberPixels": 2474,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 26,
+      "frame": 5595,
+      "button": "Оформление",
+      "amberPixels": 2559,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 27,
+      "frame": 5712,
+      "button": "Тёмная тема",
+      "amberPixels": 4627,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 28,
+      "frame": 5805,
+      "button": "Синий акцент",
+      "amberPixels": 760,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 29,
+      "frame": 6027,
+      "button": "Расписание",
+      "amberPixels": 944,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 30,
+      "frame": 6312,
+      "button": "Открыть меню",
+      "amberPixels": 680,
+      "encodedHighlightVisible": true
+    },
+    {
+      "step": 31,
+      "frame": 6423,
+      "button": "Заявки",
+      "amberPixels": 2080,
+      "encodedHighlightVisible": true
+    }
+  ],
+  "semanticsReview": "Scene-review.md",
   "filmingEnvironment": {
-    "separateLocalDatabase": true,
+    "origin": "http://127.0.0.1:4220",
+    "applicationVersion": 15,
+    "sourceCapturesRetained": true,
     "databaseRemoved": true,
     "serverStopped": true,
     "productionLearningDataChanged": false
   },
-  "voiceoverProvidedByAuthor": true,
   "mainDurationSeconds": 230,
-  "estimatedWithCameraSegmentsSeconds": [
+  "estimatedWithAuthorCameraSegmentsSeconds": [
     262,
     270
   ]
