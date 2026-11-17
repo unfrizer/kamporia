@@ -1,0 +1,40 @@
+{
+  "version": 17,
+  "commit": "2be29feeb0a361c84f11df5bb0311e905696e36a",
+  "url": "https://kamporia.ru",
+  "result": {
+    "version": 17,
+    "commit": "2be29feeb0a361c84f11df5bb0311e905696e36a",
+    "backup": "/root/kamporia-backups/v17-20261117T165638Z",
+    "verifiedTables": 35,
+    "preservedFiles": 9,
+    "integrity": "ok",
+    "schemaChanges": false
+  },
+  "live": {
+    "version": 16,
+    "origin": "https://kamporia.ru",
+    "checks": 143,
+    "roles": 4,
+    "completedAtUTC": "2026-11-17T16:56:42.062Z"
+  },
+  "localSearchChecks": 29,
+  "localRoleChecks": 132,
+  "browserChecks": [
+    "desktop public page",
+    "login",
+    "360px public page without overflow"
+  ],
+  "webmasterSubmission": {
+    "engine": "Yandex",
+    "ownership": "verified",
+    "urls": [
+      "https://kamporia.ru/",
+      "https://kamporia.ru/about"
+    ],
+    "status": "queued",
+    "submittedAtMoscow": "2026-11-17 19:59",
+    "manualSitemap": "unavailable: service read-only",
+    "googleSearchConsole": "not connected"
+  }
+}

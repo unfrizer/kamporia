@@ -1,0 +1,29 @@
+{
+  "version": 16,
+  "commit": "85133336a8dbb64dfa71ad055ce0972056a1fcb1",
+  "url": "https://kamporia.ru",
+  "result": {
+    "version": 16,
+    "commit": "85133336a8dbb64dfa71ad055ce0972056a1fcb1",
+    "backup": "/root/kamporia-backups/v16-20261117T164410Z",
+    "verifiedTables": 35,
+    "preservedFiles": 9,
+    "integrity": "ok",
+    "schemaChanges": false
+  },
+  "live": {
+    "version": 16,
+    "origin": "https://kamporia.ru",
+    "checks": 143,
+    "roles": 4,
+    "completedAtUTC": "2026-11-17T16:44:14.537Z"
+  },
+  "localSearchChecks": 28,
+  "localRoleChecks": 132,
+  "browserChecks": [
+    "desktop public page",
+    "login",
+    "360px public page without overflow"
+  ],
+  "webmasterSubmission": "pending owner sign-in"
+}

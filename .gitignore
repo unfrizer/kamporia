@@ -69,6 +69,7 @@ yarn-error.log*
 !/scripts/smoke-campus.mjs
 !/scripts/smoke-refinements.mjs
 !/scripts/smoke-cycles.mjs
+!/scripts/smoke-search.mjs
 /deploy/*.env
 /worker/index.ts
 /cloudflare-env.d.ts

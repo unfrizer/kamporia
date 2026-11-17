@@ -1,0 +1,33 @@
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import worker from '../dist/server/index.js';
+let checks=0;const ok=(v,m)=>{assert.ok(v,m);checks++};
+const env={get DB(){throw Error('Public page accessed database')}};
+const req=(path,method='GET')=>worker.fetch(new Request('https://kamporia.ru'+path,{method}),env,{});
+const root=await req('/'),html=await root.text();ok(root.status===200,'Root is public');
+ok(html.includes('<h1>')&&html.includes('Твоя Кампория.'),'Readable content without JavaScript');
+ok(html.includes('id="login-form" method="post" action="/api/login"'),'No-JS form cannot leak credentials to URL');
+ok(html.includes('href="/about"'),'Crawler can follow visible project link');
+ok(html.includes('rel="canonical" href="https://kamporia.ru/"'),'Canonical root');
+ok(/<meta name="yandex-verification" content="[a-f0-9]{16}" \/>/.test(html),'Yandex owner verification meta');
+ok(!html.includes('PUBLIC_LOGIN')&&!html.includes('STRUCTURED_DATA'),'Build placeholders resolved');
+ok(!/DemoStudent|DemoTeacher|DemoAdmin|Майя Орлова/.test(html),'No account data in server-rendered page');
+for(const path of ['/','/about']){
+ const r=await req(path),s=await r.text();ok(r.status===200,'Public route '+path);
+ const match=/<script type="application\/ld\+json">([^<]+)<\/script>/.exec(s);ok(match,'Structured data '+path);
+ const data=JSON.parse(match[1]);ok(data['@context']==='https://schema.org','Schema context');
+ const hash=createHash('sha256').update(match[1]).digest('base64');
+ ok(r.headers.get('content-security-policy').includes("'sha256-"+hash+"'"),'Only exact structured-data script allowed');
+ ok(!r.headers.get('content-security-policy').includes("script-src 'self' 'unsafe-inline'"),'Inline executable scripts stay blocked');
+ ok(s.includes('Не официальный сервис вуза'),'Contest disclosure');
+}
+const about=await(await req('/about')).text();ok(!about.includes('src="/app.js'),'About page works without app boot');
+ok(about.includes('https://kamporia.ru/about'),'About canonical');
+const robots=await(await req('/robots.txt')).text();ok(robots.includes('Disallow: /api/')&&robots.includes('Sitemap: https://kamporia.ru/sitemap.xml'),'Robots and sitemap');
+const map=await(await req('/sitemap.xml')).text();ok((map.match(/<loc>/g)||[]).length===2&&!map.includes('/api/')&&!map.includes('#'),'Only public pages in sitemap');
+const redirect=await req('/about/');ok(redirect.status===308&&redirect.headers.get('location')==='/about','No trailing-slash duplicate');
+const missing=await req('/private-student');ok(missing.status===404&&missing.headers.get('x-robots-tag')==='noindex','Unknown routes not a soft 404');
+const cover=await req('/search-cover.png');ok(cover.status===200&&cover.headers.get('content-type')==='image/png','Social image');
+ok((await cover.arrayBuffer()).byteLength>1000,'Real image bytes');
+ok((await req('/about','POST')).status===405,'Read-only public route');
+console.log('PASS '+checks+' search/read-only/security checks');
