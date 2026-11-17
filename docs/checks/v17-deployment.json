@@ -12,11 +12,13 @@
     "schemaChanges": false
   },
   "live": {
-    "version": 16,
     "origin": "https://kamporia.ru",
     "checks": 143,
     "roles": 4,
-    "completedAtUTC": "2026-11-17T16:56:42.062Z"
+    "completedAtUTC": "2026-11-17T16:56:42.062Z",
+    "originalVerifierVersionLabel": 16,
+    "checkedDeploymentVersion": 17,
+    "versionNote": "Inherited read-only checker retained the v16 output label; installed release and source commit are v17."
   },
   "localSearchChecks": 29,
   "localRoleChecks": 132,
